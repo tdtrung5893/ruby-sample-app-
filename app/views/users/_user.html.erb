@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row">
+		<table class="table table-bordered table-hover">
+	    <thead>
+	      <tr>
+	      	<th>ID</th>
+	      	<th>Avatar</th>
+	      	<th>Name</th>
+	      	<th>Email</th>
+	      	<th>Action</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	    	<tr>
+	    		<td><%= user.id %></td>
+	    		<td><%= gravatar_for user, size: 50 %></td>
+	    		<td><%= link_to user.name, user %></td>
+	    		<td><%= link_to user.email, user %></td>
+	    		<% if current_user.admin? && !current_user?(user) %>
+	    			<td><%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %></td>
+	    		<% end %>
+	    	</tr>
+	    </tbody>
+	  </table>
+	</div>
+</div>
